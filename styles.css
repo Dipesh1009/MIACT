@@ -1,0 +1,123 @@
+/* Full page gradient */
+[data-testid="stAppViewContainer"] {
+    background: linear-gradient(
+        180deg,
+        #2E2A5E 0%,
+        #1F2F3A 100%
+    );
+}
+
+/* Remove default padding */
+.block-container {
+    padding-top: 2rem;
+}
+
+/* Center Text */
+.center-container {
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.welcome-text {
+    font-size: 64px;
+    color: #EAEAEA;
+    font-weight: 400;
+}
+
+/* Bottom Input */
+.input-container {
+    position: fixed;
+    bottom: 40px;
+    left: 30%;
+    width: 40%;
+    background: #111;
+    border-radius: 25px;
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+}
+
+.custom-input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 18px;
+    outline: none;
+}
+
+.send-button {
+    background: #2D4A2E;
+    border: none;
+    color: white;
+    font-size: 20px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.result-wrapper {
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.result-card {
+    width: 60%;
+    background: #111;
+    padding: 30px 40px;
+    border-radius: 20px;
+    color: #EAEAEA;
+    box-shadow: 0px 10px 40px rgba(0,0,0,0.4);
+}
+
+
+.phone-title {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.spec-row {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #333;
+    padding: 10px 0;
+}
+
+.spec-label {
+    font-weight: 500;
+    color: #aaa;
+}
+
+.spec-value {
+    color: #fff;
+}
+
+.public-heading {
+    margin-top: 30px;
+    font-size: 22px;
+}
+
+.public-text {
+    margin-top: 10px;
+    color: #ccc;
+}
+
+.stTextInput > div > div > input {
+    background: #111;
+    color: white;
+    border-radius: 25px;
+    padding: 15px;
+    border: none;
+}
+
+.stTextInput {
+    position: fixed;
+    bottom: 40px;
+    left: 30%;
+    width: 40%;
+}

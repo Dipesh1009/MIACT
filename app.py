@@ -1,81 +1,78 @@
 import streamlit as st
 
-# ---------- Page Config ----------
 st.set_page_config(
-    page_title="MIACT – Prototype",
-    layout="wide"
+    page_title="Seeker",
+    layout="wide",
+    initial_sidebar_state="expanded"
 )
 
-# ---------- Sidebar ----------
+# ---------- SESSION STATE ----------
+if "screen" not in st.session_state:
+    st.session_state.screen = "home"
+
+if "query" not in st.session_state:
+    st.session_state.query = ""
+
+# ---------- RESULT FUNCTION ----------
+def show_result_card():
+
+    st.markdown("""
+    <div class="result-wrapper">
+        <div class="result-card">
+            <h2 class="phone-title">OnePlus 9</h2>
+            <div class="spec-row">
+                <div class="spec-label">Chipset</div>
+                <div class="spec-value">Snapdragon 888</div>
+            </div>
+            <div class="spec-row">
+                <div class="spec-label">GPU</div>
+                <div class="spec-value">Adreno 660</div>
+            </div>
+            <h3 class="public-heading">Public Opinion</h3>
+            <p class="public-text">
+            Dummy result loaded successfully.
+            </p>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+
+# Load CSS
+def load_css():
+    with open("styles.css") as f:
+        st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
+
+load_css()
+
+# Sidebar
 with st.sidebar:
-    st.title("History")
-    st.markdown("---")
-    
-    st.button("Search 1: iPhone 15")
-    st.button("Search 2: Samsung S23")
-    st.button("Search 3: Pixel 8")
+    st.markdown("## History")
+    st.markdown("**Current Chat**")
+    st.markdown("Previous Topic")
 
-    st.markdown("---")
-    st.subheader("Quick Toggles")
-    show_facts = st.checkbox("Show Facts", value=True)
-    show_opinions = st.checkbox("Show Opinions", value=True)
-    show_conflicts = st.checkbox("Show Conflicts", value=True)
-
-    st.markdown("---")
-    st.button("⚙ Settings")
-
-# ---------- Main Content ----------
-st.markdown("## Multi-source Information Aggregation & Comparison Tool (MIACT)")
-
-# Search Bar
-query = st.text_input("Enter product / topic", placeholder="e.g. iPhone 15")
-
-st.markdown("---")
-
-# ---------- Central Info Card ----------
-with st.container():
-    st.subheader("Info Through Tables")
+# ---------- UI LOGIC ----------
+if st.session_state.screen == "home":
 
     st.markdown("""
-    ***Brief about the products
+    <div class="center-container">
+        <h1 class="welcome-text">Welcome, Seeker.</h1>
+    </div>
+    """, unsafe_allow_html=True)
 
+    query = st.text_input(
+        "Search",
+        placeholder="Search something...",
+        label_visibility="collapsed"
+    )
 
-    *** 
-    """)
+    if query:
+        st.session_state.query = query
+        st.session_state.screen = "result"
+        st.rerun()
 
-# ---------- Modes Section ----------
-st.markdown("---")
-st.subheader("Modes")
+elif st.session_state.screen == "result":
 
-tabs = st.tabs(["Objective Facts", "Conflicts", "Opinions"])
+    show_result_card()
 
-# ---------- Tab 1: Objective Facts ----------
-with tabs[0]:
-    st.markdown("### Objective Attributes (Mock Data)")
-    st.table({
-        "Attribute": ["Battery", "Display", "Price"],
-        "Source A": ["4500 mAh", "6.1 inch", "₹79,999"],
-        "Source B": ["4500 mAh", "6.1 inch", "₹80,499"],
-        "Agreed": ["Yes", "Yes", "No"]
-    })
-
-# ---------- Tab 2: Conflicts ----------
-with tabs[1]:
-    st.markdown("### Conflicting Information")
-    st.warning("Price information differs across sources")
-
-# ---------- Tab 3: Opinions ----------
-with tabs[2]:
-    st.markdown("### Opinion Summary")
-    st.metric(label="Overall Sentiment", value="Positive", delta="+0.63")
-
-    st.markdown("""
-    **Common Opinions**
-    - Battery performance is good  
-    - Camera quality is excellent  
-    - Price is considered high  
-    """)
-
-# ---------- Footer ----------
-st.markdown("---")
-st.caption("Prototype UI – Data shown is illustrative only")
+    if st.button("⬅ Back"):
+        st.session_state.screen = "home"
+        st.rerun()
