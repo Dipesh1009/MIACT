@@ -1,7 +1,7 @@
 import streamlit as st
 
 st.set_page_config(
-    page_title="Seeker",
+    page_title="MIACTool",
     layout="wide",
     initial_sidebar_state="expanded"
 )
@@ -60,7 +60,7 @@ if st.session_state.screen == "home":
 
     query = st.text_input(
         "Search",
-        placeholder="Search something...",
+        placeholder="Please enter a topic",
         label_visibility="collapsed"
     )
 
