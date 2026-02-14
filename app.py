@@ -1,6 +1,7 @@
 import streamlit as st
 from bs4 import BeautifulSoup
 from scraper import get_oneplus9_specs
+import textwrap
 
 st.set_page_config(
     page_title="MIACTool",
