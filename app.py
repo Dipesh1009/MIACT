@@ -20,11 +20,8 @@ def show_result_card():
 
     specs = get_oneplus9_specs()
 
-    # Extract only needed fields safely
-    chipset = next((v for k, v in specs.items() if "chipset" in k.lower()), "Not Found")
-    gpu = next((v for k, v in specs.items() if "gpu" in k.lower()), "Not Found")
-    battery = next((v for k, v in specs.items() if "battery" in k.lower()), "Not Found")
-    display = next((v for k, v in specs.items() if "display" in k.lower()), "Not Found")
+    mrp = specs.get("MRP", "Not Found")
+    performance = specs.get("Performance", "Not Found")
 
     st.markdown(f"""
     <div class="result-wrapper">
@@ -32,23 +29,13 @@ def show_result_card():
             <h2 class="phone-title">OnePlus 9</h2>
 
             <div class="spec-row">
-                <div class="spec-label">Chipset</div>
-                <div class="spec-value">{chipset}</div>
+                <div class="spec-label">MRP</div>
+                <div class="spec-value">{mrp}</div>
             </div>
 
             <div class="spec-row">
-                <div class="spec-label">GPU</div>
-                <div class="spec-value">{gpu}</div>
-            </div>
-
-            <div class="spec-row">
-                <div class="spec-label">Display</div>
-                <div class="spec-value">{display}</div>
-            </div>
-
-            <div class="spec-row">
-                <div class="spec-label">Battery</div>
-                <div class="spec-value">{battery}</div>
+                <div class="spec-label">Performance</div>
+                <div class="spec-value">{performance}</div>
             </div>
 
             <h3 class="public-heading">Public Opinion</h3>
@@ -58,6 +45,7 @@ def show_result_card():
         </div>
     </div>
     """, unsafe_allow_html=True)
+
 
 # Load CSS
 def load_css():
