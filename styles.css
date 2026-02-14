@@ -140,8 +140,6 @@ footer {
     /* Increase input size */
     .stTextInput > div > div > input {
         font-size: 18px;
-        padding: 8px;
-        height: 60px;
     }
 
     /* Reduce welcome text size */
