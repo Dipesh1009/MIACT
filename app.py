@@ -24,27 +24,27 @@ def show_result_card():
     performance = specs.get("Performance", "Not Found")
 
     st.markdown(f"""
-    <div class="result-wrapper">
-        <div class="result-card">
-            <h2 class="phone-title">OnePlus 9</h2>
+<div class="result-wrapper">
+    <div class="result-card">
+        <h2 class="phone-title">OnePlus 9</h2>
 
-            <div class="spec-row">
-                <div class="spec-label">MRP</div>
-                <div class="spec-value">{mrp}</div>
-            </div>
-
-            <div class="spec-row">
-                <div class="spec-label">Performance</div>
-                <div class="spec-value">{performance}</div>
-            </div>
-
-            <h3 class="public-heading">Public Opinion</h3>
-            <p class="public-text">
-            Live scraped data loaded successfully.
-            </p>
+        <div class="spec-row">
+            <div class="spec-label">MRP</div>
+            <div class="spec-value">{mrp}</div>
         </div>
+
+        <div class="spec-row">
+            <div class="spec-label">Performance</div>
+            <div class="spec-value">{performance}</div>
+        </div>
+
+        <h3 class="public-heading">Public Opinion</h3>
+        <p class="public-text">
+        Live scraped data loaded successfully.
+        </p>
     </div>
-    """, unsafe_allow_html=True)
+</div>
+""", unsafe_allow_html=True)
 
 
 # Load CSS
