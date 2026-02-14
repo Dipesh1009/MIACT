@@ -121,3 +121,42 @@
     left: 30%;
     width: 40%;
 }
+
+
+/* ————— Media Queries ————— */
+@media (max-width: 768px) {
+
+    /* Adjusting textbox */
+    .stTextInput {
+        left: 5%;
+        width: 90%;
+        bottom: 20px;
+    }
+
+    /* Increase input size */
+    .stTextInput > div > div > input {
+        font-size: 22px;
+        padding: 18px;
+        height: 60px;
+    }
+
+    /* Reduce welcome text size */
+    .welcome-text {
+        font-size: 36px;
+        text-align: center;
+        padding: 0 20px;
+    }
+
+    /* Make result card full width */
+    .result-card {
+        width: 90%;
+        padding: 12px;
+    }
+
+    /* Adjust result wrapper height */
+    .result-wrapper {
+        height: auto;
+        margin-top: 80px;
+        align-items: flex-start;
+    }
+}
