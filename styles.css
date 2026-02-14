@@ -122,6 +122,10 @@
     width: 40%;
 }
 
+/* Testing to remove Streamlit icons */
+footer {
+    display: none;
+}
 
 /* ————— Media Queries ————— */
 @media (max-width: 768px) {
@@ -130,7 +134,7 @@
     .stTextInput {
         left: 5%;
         width: 80%;
-        bottom: 30px;
+        bottom: 40px;
     }
 
     /* Increase input size */
