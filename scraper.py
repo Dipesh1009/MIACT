@@ -16,4 +16,4 @@ def get_oneplus9_specs():
     keys = soup.find_all("label")
     print("LABEL COUNT:", len(keys))
 
-    return specs
+    return {}
