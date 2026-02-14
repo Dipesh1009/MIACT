@@ -5,7 +5,7 @@ import requests
 def get_oneplus9_specs():
     url = "https://www.oneplus.in/9/specs"
 
-    response = requests.get(url, timeout=10)
+    response = requests.get(url, timeout=200)
     response.encoding = response.apparent_encoding
 
     print("STATUS:", response.status_code)
