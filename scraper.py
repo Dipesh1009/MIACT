@@ -9,17 +9,27 @@ def get_oneplus9_specs():
         "User-Agent": "Mozilla/5.0"
     }
 
-    response = requests.get(url, headers=headers, timeout=30)
+    response = requests.get(url, headers=headers, timeout=20)
     response.encoding = response.apparent_encoding
 
     soup = BeautifulSoup(response.text, "html.parser")
+    section_labels = soup.find_all(
+        "label",
+        class_="params-item-key font-subheading-lg"
+    )
 
-    keys = soup.find_all("label", class_="params-item-key font-body-md")
-    values = soup.find_all("div", class_="params-item-value font-body-md")
+    section_values = soup.find_all(
+        "div",
+        class_="des font-body-md"
+    )
 
     specs = {}
 
-    for key, value in zip(keys, values):
-        specs[key.text.strip()] = value.text.strip()
+    for label, value in zip(section_labels, section_values):
+        key = label.text.strip()
+        val = value.text.strip()
+
+        if key in ["MRP", "Performance"]:
+            specs[key] = val
 
     return specs
