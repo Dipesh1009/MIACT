@@ -5,15 +5,21 @@ import requests
 def get_oneplus9_specs():
     url = "https://www.oneplus.in/9/specs"
 
-    response = requests.get(url, timeout=200)
+    headers = {
+        "User-Agent": "Mozilla/5.0"
+    }
+
+    response = requests.get(url, headers=headers, timeout=30)
     response.encoding = response.apparent_encoding
 
-    print("STATUS:", response.status_code)
-    print("LENGTH:", len(response.text))
-    
     soup = BeautifulSoup(response.text, "html.parser")
 
-    keys = soup.find_all("label")
-    print("LABEL COUNT:", len(keys))
+    keys = soup.find_all("label", class_="params-item-key font-body-md")
+    values = soup.find_all("div", class_="params-item-value font-body-md")
 
-    return {}
+    specs = {}
+
+    for key, value in zip(keys, values):
+        specs[key.text.strip()] = value.text.strip()
+
+    return specs
