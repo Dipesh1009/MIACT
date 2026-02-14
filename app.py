@@ -1,5 +1,5 @@
 import streamlit as st
-from scraper import get_oneplus9_specs
+from dummy_scraper import get_oneplus9_specs
 
 st.set_page_config(
     page_title="MIACTool",
