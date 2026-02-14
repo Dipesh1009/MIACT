@@ -1,4 +1,5 @@
 import streamlit as st
+from scraper import get_oneplus9_specs
 
 st.set_page_config(
     page_title="MIACTool",
@@ -16,21 +17,42 @@ if "query" not in st.session_state:
 # ---------- RESULT FUNCTION ----------
 def show_result_card():
 
-    st.markdown("""
+    specs = get_oneplus9_specs()
+
+    # Extract only needed fields safely
+    chipset = next((v for k, v in specs.items() if "chipset" in k.lower()), "Not Found")
+    gpu = next((v for k, v in specs.items() if "gpu" in k.lower()), "Not Found")
+    battery = next((v for k, v in specs.items() if "battery" in k.lower()), "Not Found")
+    display = next((v for k, v in specs.items() if "display" in k.lower()), "Not Found")
+
+    st.markdown(f"""
     <div class="result-wrapper">
         <div class="result-card">
             <h2 class="phone-title">OnePlus 9</h2>
+
             <div class="spec-row">
                 <div class="spec-label">Chipset</div>
-                <div class="spec-value">Snapdragon 888</div>
+                <div class="spec-value">{chipset}</div>
             </div>
+
             <div class="spec-row">
                 <div class="spec-label">GPU</div>
-                <div class="spec-value">Adreno 660</div>
+                <div class="spec-value">{gpu}</div>
             </div>
+
+            <div class="spec-row">
+                <div class="spec-label">Display</div>
+                <div class="spec-value">{display}</div>
+            </div>
+
+            <div class="spec-row">
+                <div class="spec-label">Battery</div>
+                <div class="spec-value">{battery}</div>
+            </div>
+
             <h3 class="public-heading">Public Opinion</h3>
             <p class="public-text">
-            Dummy result loaded successfully.
+            Live scraped data loaded successfully.
             </p>
         </div>
     </div>
